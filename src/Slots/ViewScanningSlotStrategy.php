@@ -22,7 +22,7 @@ final class ViewScanningSlotStrategy implements SlotStrategy
                 return str_contains((string) file_get_contents($path), '$slot');
             }
 
-            if (is_string($rendered)) {
+            if (\is_string($rendered)) {
                 return str_contains($rendered, '$slot');
             }
 

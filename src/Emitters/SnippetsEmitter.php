@@ -52,7 +52,7 @@ final class SnippetsEmitter
         }
 
         foreach ($component->attributes as $attribute) {
-            if (! $attribute->required && in_array($attribute->name, $valueAttributes, true) && $attribute->values !== []) {
+            if (! $attribute->required && \in_array($attribute->name, $valueAttributes, true) && $attribute->values !== []) {
                 $tabstop++;
                 $parts[] = $attribute->name.'="${'.$tabstop.'|'.implode(',', $attribute->values).'|}"';
             }

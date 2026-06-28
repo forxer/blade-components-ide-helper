@@ -5,13 +5,14 @@ declare(strict_types=1);
 use Forxer\BladeComponentsIdeHelper\Attributes\PropertiesAndConstructorSurface;
 use Forxer\BladeComponentsIdeHelper\Definition\ComponentDefinition;
 use Forxer\BladeComponentsIdeHelper\Introspection\ComponentIntrospector;
+use Forxer\BladeComponentsIdeHelper\Metadata\ComponentMetadata;
 use Forxer\BladeComponentsIdeHelper\Tests\Fixtures\Components\RichBadge;
 use Forxer\BladeComponentsIdeHelper\Tests\Fixtures\Components\VanillaCard;
 use Forxer\BladeComponentsIdeHelper\Tests\Fixtures\Components\VanillaInput;
 
 /**
  * @param  array<string, class-string>  $components
- * @return array<string, \Forxer\BladeComponentsIdeHelper\Metadata\ComponentMetadata>
+ * @return array<string, ComponentMetadata>
  */
 function metaFor(array $components, string $prefix = '', ?object $surface = null): array
 {
