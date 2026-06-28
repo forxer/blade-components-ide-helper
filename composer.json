@@ -19,6 +19,11 @@
             "Forxer\\BladeComponentsIdeHelper\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Forxer\\BladeComponentsIdeHelper\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Vincent Garnier",
