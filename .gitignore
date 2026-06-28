@@ -1,1 +1,4 @@
-/vendor/
+/.rector_cache
+/vendor
+composer.lock
+/docs/superpowers
