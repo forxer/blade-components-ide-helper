@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-1.0.0-RC.1 (2023-06-28)
------------------------
+Unreleased
+----------
 
-- First pre-release
+- First release: generate IDE metadata (VS Code snippets & Custom Data, PhpStorm/Laravel Idea `ide.json`) for Laravel packages shipping class-based Blade components.

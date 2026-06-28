@@ -15,6 +15,10 @@ and either extend the provided `AbstractIdeCommand` or call the services directl
 composer require --dev forxer/blade-components-ide-helper
 ```
 
+Use a plain (non-dev) `require` instead if your package calls any of this library's
+services at runtime — for example reusing `Reflection\AttributeReflector` to hydrate
+component attributes — rather than only generating IDE metadata.
+
 ## The contract: `ComponentDefinition`
 
 ```php
