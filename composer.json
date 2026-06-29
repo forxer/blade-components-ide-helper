@@ -14,6 +14,13 @@
         "orchestra/testbench": "^10.0 || ^11"
     },
     "license": "MIT",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Forxer\\BladeComponentsIdeHelper\\IdeHelperServiceProvider"
+            ]
+        }
+    },
     "autoload": {
         "psr-4": {
             "Forxer\\BladeComponentsIdeHelper\\": "src/"
