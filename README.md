@@ -57,13 +57,40 @@ Implement `Forxer\BladeComponentsIdeHelper\Slots\SlotStrategy` for a custom rule
 
 ## Wiring a command
 
-Extend `AbstractIdeCommand`: provide the `$signature` (with the standard option set), a
-`definition()`, and a `fileBaseName()`.
+Describe your components once as an `IdeTarget` (a `ComponentDefinition` plus the file base name),
+in your service provider. Register it with the `IdeTargetRegistry` so the aggregate command can find
+it, and expose a thin per-package command whose `target()` returns that same target.
 
 ```php
 use Forxer\BladeComponentsIdeHelper\Attributes\PropertiesAndConstructorSurface;
-use Forxer\BladeComponentsIdeHelper\Commands\AbstractIdeCommand;
 use Forxer\BladeComponentsIdeHelper\Definition\ComponentDefinition;
+use Forxer\BladeComponentsIdeHelper\Definition\IdeTarget;
+use Forxer\BladeComponentsIdeHelper\Registry\IdeTargetRegistry;
+
+// In your service provider — the single source of truth for the target:
+public static function ideTarget(): IdeTarget
+{
+    return new IdeTarget(
+        definition: new ComponentDefinition(
+            components: config('my-package.components'),
+            prefix: (string) config('my-package.prefix', ''),
+            attributeSurface: new PropertiesAndConstructorSurface(),
+        ),
+        fileBaseName: 'my-package',
+    );
+}
+
+public function boot(): void
+{
+    // so `blade-components-ide-helper:generate` regenerates this package too:
+    IdeTargetRegistry::register(self::ideTarget());
+    $this->commands([IdeCommand::class]);
+}
+```
+
+```php
+use Forxer\BladeComponentsIdeHelper\Commands\AbstractIdeCommand;
+use Forxer\BladeComponentsIdeHelper\Definition\IdeTarget;
 
 class IdeCommand extends AbstractIdeCommand
 {
@@ -76,24 +103,23 @@ class IdeCommand extends AbstractIdeCommand
 
     protected $description = 'Generate IDE metadata for the components';
 
-    protected function definition(): ComponentDefinition
+    protected function target(): IdeTarget
     {
-        return new ComponentDefinition(
-            components: config('my-package.components'),
-            prefix: (string) config('my-package.prefix', ''),
-            attributeSurface: new PropertiesAndConstructorSurface(),
-        );
-    }
-
-    protected function fileBaseName(): string
-    {
-        return 'my-package';
+        return MyServiceProvider::ideTarget();
     }
 }
 ```
 
-Running it writes `.vscode/my-package.code-snippets`, `.vscode/my-package.html-data.json`, and
-`ide-helper/my-package/ide.json`.
+Running `php artisan my-package:ide` writes `.vscode/my-package.code-snippets`,
+`.vscode/my-package.html-data.json`, and `ide-helper/my-package/ide.json`.
+
+## Regenerating every consumer at once
+
+The package auto-registers an aggregate command. Once each consumer has registered its target,
+`php artisan blade-components-ide-helper:generate` regenerates the metadata of **every** registered
+package in a single run — pass `--only=base1,base2` to restrict it, plus the usual
+`--snippets` / `--json` / `--ide-json` format flags. A host application can then wire one
+`post-autoload-dump` line instead of one per consumer.
 
 ## Multiple packages side by side
 
