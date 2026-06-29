@@ -7,8 +7,8 @@ use Forxer\BladeComponentsIdeHelper\Definition\IdeTarget;
 use Forxer\BladeComponentsIdeHelper\Registry\IdeTargetRegistry;
 
 beforeEach(function (): void {
-    // Temporary: the package service provider (added in a later task) will bind this
-    // singleton. Until then, bind it here so the static proxies share one instance.
+    // Rebind the singleton fresh so each test starts with an empty registry,
+    // independent of any targets registered during service provider boot.
     $this->app->singleton(IdeTargetRegistry::class);
 });
 
