@@ -12,8 +12,14 @@ final class TestServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/views', 'fixtures');
 
-        if ($this->app->runningInConsole() && class_exists(TestIdeCommand::class)) {
-            $this->commands([TestIdeCommand::class]);
+        if ($this->app->runningInConsole()) {
+            if (class_exists(TestIdeCommand::class)) {
+                $this->commands([TestIdeCommand::class]);
+            }
+
+            if (class_exists(OtherIdeCommand::class)) {
+                $this->commands([OtherIdeCommand::class]);
+            }
         }
     }
 }
