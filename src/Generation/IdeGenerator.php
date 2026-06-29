@@ -18,7 +18,7 @@ class IdeGenerator
 
     /**
      * @param  list<string>  $formats  subset of ['snippets', 'json', 'ide-json']
-     * @return list<string>  absolute paths of the files written
+     * @return list<string> absolute paths of the files written
      */
     public function generate(IdeTarget $target, array $formats, string $vscodeDirectory, string $ideDirectory): array
     {
