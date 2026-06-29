@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Forxer\BladeComponentsIdeHelper\Commands;
 
+use Throwable;
 use Forxer\BladeComponentsIdeHelper\Commands\Concerns\ResolvesIdeOptions;
 use Forxer\BladeComponentsIdeHelper\Definition\IdeTarget;
 use Forxer\BladeComponentsIdeHelper\Generation\IdeGenerator;
@@ -64,7 +65,7 @@ class GenerateIdeMetadataCommand extends Command
                 foreach ($written as $path) {
                     $this->line('  • '.$path);
                 }
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 $failed = true;
                 warning($target->fileBaseName.': failed — '.$e->getMessage());
             }
@@ -83,7 +84,7 @@ class GenerateIdeMetadataCommand extends Command
         $only = $this->option('only');
 
         if ($only !== null && $only !== '') {
-            $wanted = array_map('trim', explode(',', $only));
+            $wanted = array_map(trim(...), explode(',', $only));
 
             return array_values(array_filter(
                 $all,

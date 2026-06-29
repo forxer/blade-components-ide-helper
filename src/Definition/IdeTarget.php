@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Forxer\BladeComponentsIdeHelper\Definition;
 
-final class IdeTarget
+final readonly class IdeTarget
 {
-    public readonly string $ideJsonSubdirectory;
+    public string $ideJsonSubdirectory;
 
     public function __construct(
-        public readonly ComponentDefinition $definition,
-        public readonly string $fileBaseName,
+        public ComponentDefinition $definition,
+        public string $fileBaseName,
         ?string $ideJsonSubdirectory = null,
     ) {
         $this->ideJsonSubdirectory = $ideJsonSubdirectory ?? 'ide-helper/'.$fileBaseName;

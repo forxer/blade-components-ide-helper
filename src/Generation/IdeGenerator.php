@@ -23,7 +23,7 @@ class IdeGenerator
     public function generate(IdeTarget $target, array $formats, string $vscodeDirectory, string $ideDirectory): array
     {
         $definition = $target->definition;
-        $model = (new ComponentIntrospector($definition))->introspect();
+        $model = new ComponentIntrospector($definition)->introspect();
 
         $filenames = [
             'snippets' => $target->fileBaseName.'.code-snippets',
