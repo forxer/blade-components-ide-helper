@@ -6,6 +6,7 @@ namespace Forxer\BladeComponentsIdeHelper\Tests\Fixtures;
 
 use Forxer\BladeComponentsIdeHelper\Commands\AbstractIdeCommand;
 use Forxer\BladeComponentsIdeHelper\Definition\ComponentDefinition;
+use Forxer\BladeComponentsIdeHelper\Definition\IdeTarget;
 use Forxer\BladeComponentsIdeHelper\Tests\Fixtures\Components\VanillaInput;
 
 class OtherIdeCommand extends AbstractIdeCommand
@@ -19,16 +20,19 @@ class OtherIdeCommand extends AbstractIdeCommand
 
     protected $description = 'Generate IDE metadata for a second fixture package';
 
-    protected function definition(): ComponentDefinition
+    public static function ideTarget(): IdeTarget
     {
-        return new ComponentDefinition(
-            components: ['input' => VanillaInput::class],
-            prefix: 'other',
+        return new IdeTarget(
+            definition: new ComponentDefinition(
+                components: ['input' => VanillaInput::class],
+                prefix: 'other',
+            ),
+            fileBaseName: 'other-package',
         );
     }
 
-    protected function fileBaseName(): string
+    protected function target(): IdeTarget
     {
-        return 'other-package';
+        return self::ideTarget();
     }
 }

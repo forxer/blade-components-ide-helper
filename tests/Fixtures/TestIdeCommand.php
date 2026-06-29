@@ -7,6 +7,7 @@ namespace Forxer\BladeComponentsIdeHelper\Tests\Fixtures;
 use Forxer\BladeComponentsIdeHelper\Attributes\PropertiesAndConstructorSurface;
 use Forxer\BladeComponentsIdeHelper\Commands\AbstractIdeCommand;
 use Forxer\BladeComponentsIdeHelper\Definition\ComponentDefinition;
+use Forxer\BladeComponentsIdeHelper\Definition\IdeTarget;
 use Forxer\BladeComponentsIdeHelper\Tests\Fixtures\Components\RichBadge;
 use Forxer\BladeComponentsIdeHelper\Tests\Fixtures\Components\VanillaCard;
 use Forxer\BladeComponentsIdeHelper\Tests\Fixtures\Components\VanillaInput;
@@ -22,20 +23,23 @@ class TestIdeCommand extends AbstractIdeCommand
 
     protected $description = 'Generate IDE metadata for the fixture components';
 
-    protected function definition(): ComponentDefinition
+    public static function ideTarget(): IdeTarget
     {
-        return new ComponentDefinition(
-            components: [
-                'input' => VanillaInput::class,
-                'card' => VanillaCard::class,
-                'badge' => RichBadge::class,
-            ],
-            attributeSurface: new PropertiesAndConstructorSurface(),
+        return new IdeTarget(
+            definition: new ComponentDefinition(
+                components: [
+                    'input' => VanillaInput::class,
+                    'card' => VanillaCard::class,
+                    'badge' => RichBadge::class,
+                ],
+                attributeSurface: new PropertiesAndConstructorSurface(),
+            ),
+            fileBaseName: 'fixtures',
         );
     }
 
-    protected function fileBaseName(): string
+    protected function target(): IdeTarget
     {
-        return 'fixtures';
+        return self::ideTarget();
     }
 }
