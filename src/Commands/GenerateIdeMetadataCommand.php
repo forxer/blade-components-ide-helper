@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Forxer\BladeComponentsIdeHelper\Commands;
 
-use Throwable;
 use Forxer\BladeComponentsIdeHelper\Commands\Concerns\ResolvesIdeOptions;
 use Forxer\BladeComponentsIdeHelper\Definition\IdeTarget;
 use Forxer\BladeComponentsIdeHelper\Generation\IdeGenerator;
 use Forxer\BladeComponentsIdeHelper\Registry\IdeTargetRegistry;
 use Illuminate\Console\Command;
+use Throwable;
 
 use function Laravel\Prompts\info;
 use function Laravel\Prompts\multiselect;
