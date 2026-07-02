@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06df57245fa46f1bc0d1b90b14910e25",
+    "content-hash": "0294f801526bd5ae987fb00242117ab9",
     "packages": [
         {
             "name": "brick/math",
@@ -513,6 +513,61 @@
                 }
             ],
             "time": "2025-03-06T22:45:56+00:00"
+        },
+        {
+            "name": "forxer/blade-components-reflection",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/forxer/blade-components-reflection.git",
+                "reference": "96eb01d1901dd5953b0bb57efa407356866251e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/forxer/blade-components-reflection/zipball/96eb01d1901dd5953b0bb57efa407356866251e2",
+                "reference": "96eb01d1901dd5953b0bb57efa407356866251e2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^12.0 || ^13.0",
+                "illuminate/view": "^12.0 || ^13.0",
+                "php": "^8.4"
+            },
+            "require-dev": {
+                "driftingly/rector-laravel": "^2.5.0",
+                "laravel/pint": "^1.29.3",
+                "pestphp/pest": "^3",
+                "rector/rector": "^2.5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Forxer\\BladeComponentsReflection\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vincent Garnier",
+                    "email": "forxer@gmail.com"
+                }
+            ],
+            "description": "Runtime reflection utilities for class-based Blade components (settable attributes & constructor parameters).",
+            "homepage": "https://github.com/forxer/blade-components-reflection",
+            "keywords": [
+                "blade",
+                "component",
+                "laravel",
+                "reflection"
+            ],
+            "support": {
+                "issues": "https://github.com/forxer/blade-components-reflection/issues",
+                "source": "https://github.com/forxer/blade-components-reflection"
+            },
+            "time": "2026-07-02T11:00:38+00:00"
         },
         {
             "name": "fruitcake/php-cors",

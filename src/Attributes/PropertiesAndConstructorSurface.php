@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Forxer\BladeComponentsIdeHelper\Attributes;
 
-use Forxer\BladeComponentsIdeHelper\Reflection\AttributeReflector;
+use Forxer\BladeComponentsReflection\AttributeReflector;
 use ReflectionClass;
 
 final class PropertiesAndConstructorSurface implements AttributeSurface
