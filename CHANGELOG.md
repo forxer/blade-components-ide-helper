@@ -5,7 +5,7 @@ CHANGELOG
 ------------------
 
 - BREAKING: `AttributeReflector` moved to the new package `forxer/blade-components-reflection`. Update
-  imports to `Forxer\BladeComponentsReflection\AttributeReflector`.
+  imports to `Forxer\BladeComponentsReflection\AttributeReflector`. See `UPGRADE.md`.
 - `blade-components-ide-helper` is now a pure dev tool: require it as `require-dev` everywhere.
 
 1.0.0 (2026-06-29)
