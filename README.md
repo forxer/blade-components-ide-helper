@@ -2,9 +2,20 @@
 
 Generate IDE metadata for Laravel packages (and apps) that ship **class-based Blade components**:
 
-- **VS Code snippets** (`<base>.code-snippets`) — zero-install completion of `<x-…>` tags.
-- **VS Code Custom Data** (`<base>.html-data.json`) — consumed by a dedicated VS Code extension.
+- **VS Code Custom Data** (`<base>.html-data.json`) — full attribute-name/value completion and hover
+  inside `<x-…>` tags, via the
+  **[Blade Components IDE Helper](https://marketplace.visualstudio.com/items?itemName=forxer.blade-components-ide-helper)**
+  VS Code extension (also on
+  [Open VSX](https://open-vsx.org/extension/forxer/blade-components-ide-helper)). **This is the
+  recommended solution.**
+- **VS Code snippets** (`<base>.code-snippets`) — zero-install *fallback* that scaffolds `<x-…>` tags
+  without any extension. Use it only when the extension can't be installed.
 - **PhpStorm / Laravel Idea** (`ide.json`) — tag → component-class mapping, auto-merged by Laravel Idea.
+
+> **Pick one VS Code output, not both.** The snippets and the extension both complete `<x-…>`, and
+> when generated together the snippets outrank the extension's suggestions. If your team uses the
+> extension, generate `--json --ide-json` (skip `--snippets`); otherwise generate
+> `--snippets --ide-json`. The `ide.json` (PhpStorm) is independent — keep it in either case.
 
 It is a small, framework-only library: you describe your components with a `ComponentDefinition`,
 and either extend the provided `AbstractIdeCommand` or call the services directly.
