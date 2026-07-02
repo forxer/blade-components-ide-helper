@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-2.0.0 (unreleased)
+2.0.0 (2026-07-02)
 ------------------
 
 - BREAKING: `AttributeReflector` moved to the new package `forxer/blade-components-reflection`. Update
