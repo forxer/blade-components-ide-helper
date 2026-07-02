@@ -44,7 +44,11 @@ src/Registry/       IdeTargetRegistry — consumers call ::register() in boot();
 src/Introspection/  ComponentIntrospector (builds the model) + DocblockParser (reads a @var
                     'a'|'b' literal union for constrained values, and @param/property summaries).
 src/Attributes/     AttributeSurface strategy — what counts as a settable attribute:
-                    ConstructorParametersSurface (default) | PropertiesAndConstructorSurface.
+                    ConstructorParametersSurface (default) | PropertiesAndConstructorSurface. Both
+                    delegate the actual reflection to `AttributeReflector`, which now lives in the
+                    separate package `forxer/blade-components-reflection` (a `require`, not
+                    `require-dev`, of this package) — this package itself stays `require-dev` in
+                    every consumer.
 src/Slots/          SlotStrategy — does the component accept inner content:
                     ViewScanningSlotStrategy (default: render + scan for $slot) | NullSlotStrategy.
 src/Emitters/       HtmlDataEmitter (json) | SnippetsEmitter | IdeJsonEmitter — pure array builders.
