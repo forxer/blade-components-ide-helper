@@ -1,5 +1,10 @@
 # Blade Components IDE Helper
 
+> **Abandoned.** This package is no longer maintained and will receive no further updates. Existing
+> versions remain installable. The runtime reflection utilities live on in
+> [`forxer/blade-components-reflection`](https://github.com/forxer/blade-components-reflection), and
+> `forxer/blade-ui-kit-bootstrap` no longer integrates this package since 3.3.0.
+
 Generate IDE metadata for Laravel packages (and apps) that ship **class-based Blade components**:
 
 - **VS Code Custom Data** (`<base>.html-data.json`) — full attribute-name/value completion and hover
